@@ -11,7 +11,7 @@ COPY package*.json ./
 # Define typescript config by copying ts*.json
 COPY ts*.json ./
 
-COPY set_env.sh ./
+COPY set_env_prod.sh ./
 
 # Install dependencies
 RUN npm install
