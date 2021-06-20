@@ -11,7 +11,19 @@ COPY package*.json ./
 # Define typescript config by copying ts*.json
 COPY ts*.json ./
 
+# Define environment variables
+# secure variables in file
 COPY set_env_prod.sh ./
+
+# secret variables as argument
+ARG POSTGRES_USERNAME=default_value
+ENV POSTGRES_USERNAME=${POSTGRES_USERNAME}
+ARG POSTGRES_PASSWORD=default_value
+ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+ARG POSTGRES_DB=default_value
+ENV POSTGRES_DB=${POSTGRES_DB}
+ARG JWT_SECRET=default_value
+ENV JWT_SECRET=${JWT_SECRET}
 
 # Install dependencies
 RUN npm install
